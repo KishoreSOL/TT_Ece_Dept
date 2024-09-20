@@ -17,7 +17,6 @@ student_preod_collection=db['student_pre_od']
 def index():
     return render_template('index.html')
 
-
 @app.route('/login', methods=['GET', 'POST'])
 def login():
     if request.method == 'POST':

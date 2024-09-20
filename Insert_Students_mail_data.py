@@ -1,12 +1,12 @@
 import pymongo
 from pymongo import MongoClient
 
-# Connect to MongoDB
+
 client = MongoClient('mongodb://localhost:27017/')
 db = client['ECE_DPT']
 collection = db['student_mail_pass']
 
-# Data to be inserted
+
 data = [
     {"name": "AADHAVAN G V", "email": "aadhavangv.22ece@kongu.edu", "password": "aadhavan@kec"},
     {"name": "ABHENATHAN S", "email": "abhenathans.22ece@kongu.edu", "password": "abhenathan@kec"},

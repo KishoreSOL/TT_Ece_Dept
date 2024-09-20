@@ -1,12 +1,14 @@
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Kongu Engineering College</title>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" integrity="sha384-k6RqeWeci5ZR/Lv4MR0sA0FfDOMK6Yaqd3I3L2r4V4/i61pEl5xP2f0WJj5c/0" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap&quot; rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap&quot; rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css&quot; integrity="sha384-k6RqeWeci5ZR/Lv4MR0sA0FfDOMK6Yaqd3I3L2r4V4/i61pEl5xP2f0WJj5c/0" crossorigin="anonymous">
     <style>
         /* Global Styles */
         * {
@@ -307,10 +309,12 @@
             left: 0;
             color: #ffcc00; /* Icon color */
         }
+        /* Logo Styles */
+        /* Logo Styles */
         .logo {
             position: fixed;
-            bottom: 40px;
-            left: 40px;
+            bottom: 20px;
+            left: 20px;
             cursor: pointer;
             z-index: 1000;
             width: 50px; /* Adjust the size as needed */
@@ -335,53 +339,30 @@
 <body>
 
     <header>
-        <img src="{{ url_for('static', filename='KEC-Logo.png') }}" alt="Kongu Engineering College Logo">
+        <img src="kec.jpg" alt="Kongu Engineering College Logo">
         <h1>Kongu Engineering College, Perundurai</h1>
         <h2>Empowering Future Innovators</h2>
     </header>
 
-    <!-- <nav>
+    <nav>
         <ul>
             <li><a href="#about-ece">About</a></li>
             <li><a href="#vision-mission">About-HOD</a></li>
             <li><a href="#vision-mission">Vision & Mission</a></li>
-            <li><a href="#program-outcomes">Program Outcomes</a></li>
             <li><a href="faculty.html">Faculty</a></li>
             <li><a href="#achievements">Achievements</a></li>
             <li><a href="#internals">Internals</a></li>
             <li><a href="#contact">Contact</a></li>
             <li><a href="login.html">Login</a></li>
             <li><a href="ondutystudent.html">On Duty</a></li>
-        </ul>
-    </nav> -->
-
-    <nav>
-        <ul>
-            <li><a href="#vision-mission">Vision & Mission</a></li>
-            <li><a href="#program-outcomes">Program Outcomes</a></li>
-            <li><a href="#about-hod">About HOD</a></li>
-            <li><a href="{{ url_for('faculty') }}">Faculty</a></li>
-            <li><a href="#achievements">Achievements</a></li>
-            <li><a href="#internals">Internals</a></li>
-            <li><a href="#contact">Contact</a></li>
-            <li><a href="{{ url_for('seminarbooking') }}">Seminar Booking</a></li>
-            <li><a href="{{ url_for('onduty') }}">On Duty</a></li> 
-            {% if 'user' in session %}
-            <!-- If the user is logged in, show their email and a logout option -->
-            <li style="color: #ffffff;">Welcome, {{ session['user'] }}</li>
-            <li><a href="{{ url_for('logout') }}">Logout</a></li>
-        {% else %}
-            <!-- If no user is logged in, show the login link -->
-            <li><a href="{{ url_for('login') }}">Login</a></li>
-        {% endif %}
-
+            <li><a href="seminarbooking.html">seminarhallbooking</a></li>
         </ul>
     </nav>
-    
+   
 
     <div class="banner">
         <video autoplay muted loop>
-            <source src="{{ url_for('static', filename='ecevideo.mp4') }}" type="video/mp4">
+            <source src="ece.mp4" type="video/mp4">
             Your browser does not support the video tag.
         </video>
         <h2>Welcome to the Department of Electronics and Communication Engineering</h2>
@@ -396,8 +377,8 @@
         </section>
 
     </center>
-  
-    
+ 
+   
 
     <div class="cards" style="margin-top: 20px;">
         <div class="card">
@@ -434,8 +415,7 @@
     </section>
     <center>
         <div class="about-hod" id="about-hod"></div>
-        <img src="{{ url_for('static', filename='hod.jpeg') }}" alt="HOD Image" style="width: 200px; height: auto;">
-
+        <img src="kasthuri.jpg" alt="HOD Image">
         <div class="hod-details">
             <h4>About Our HOD</h4>
             <p>Dr. John Doe has over 20 years of experience in the field of electronics and communication engineering and is committed to fostering innovation through research and collaboration.</p>
@@ -447,22 +427,21 @@
     <div class="carousel-container">
         <h2>Our Recruiting Partners</h2>
         <div class="carousel">
-            <div class="slide"><img src="{{ url_for('static', filename='7.jpg') }}" alt="Logo 7"></div>
-            <div class="slide"><img src="{{ url_for('static', filename='6.jpg') }}" alt="Logo 6"></div>
-            <div class="slide"><img src="{{ url_for('static', filename='5.jpg') }}" alt="Logo 5"></div>
-            <div class="slide"><img src="{{ url_for('static', filename='4.jpg') }}" alt="Logo 4"></div>
-            <div class="slide"><img src="{{ url_for('static', filename='3.jpg') }}" alt="Logo 3"></div>
-            <div class="slide"><img src="{{ url_for('static', filename='2.jpg') }}" alt="Logo 2"></div>
-            <div class="slide"><img src="{{ url_for('static', filename='1.jpg') }}" alt="Logo 1"></div>
-            <div class="slide"><img src="{{ url_for('static', filename='7.jpg') }}" alt="Logo 7"></div>
-            <div class="slide"><img src="{{ url_for('static', filename='6.jpg') }}" alt="Logo 6"></div>
-            <div class="slide"><img src="{{ url_for('static', filename='5.jpg') }}" alt="Logo 5"></div>
-            <div class="slide"><img src="{{ url_for('static', filename='4.jpg') }}" alt="Logo 4"></div>
-            <div class="slide"><img src="{{ url_for('static', filename='3.jpg') }}" alt="Logo 3"></div>
-            <div class="slide"><img src="{{ url_for('static', filename='2.jpg') }}" alt="Logo 2"></div>
-            <div class="slide"><img src="{{ url_for('static', filename='1.jpg') }}" alt="Logo 1"></div>
+            <div class="slide"><img src="7.jpg" alt="Logo 7"></div>
+            <div class="slide"><img src="6.jpg" alt="Logo 6"></div>
+            <div class="slide"><img src="5.jpg" alt="Logo 5"></div>
+            <div class="slide"><img src="4.jpg" alt="Logo 4"></div>
+            <div class="slide"><img src="3.jpg" alt="Logo 3"></div>
+            <div class="slide"><img src="2.jpg" alt="Logo 2"></div>
+            <div class="slide"><img src="1.jpg" alt="Logo 1"></div>
+            <div class="slide"><img src="7.jpg" alt="Logo 7"></div>
+            <div class="slide"><img src="6.jpg" alt="Logo 6"></div>
+            <div class="slide"><img src="5.jpg" alt="Logo 5"></div>
+            <div class="slide"><img src="4.jpg" alt="Logo 4"></div>
+            <div class="slide"><img src="3.jpg" alt="Logo 3"></div>
+            <div class="slide"><img src="2.jpg" alt="Logo 2"></div>
+            <div class="slide"><img src="1.jpg" alt="Logo 1"></div>
         </div>
-        
         <div class="indicators">
             <span class="dot"></span>
             <span class="dot"></span>
@@ -498,8 +477,8 @@
             </ul>
         </div>
     </footer>
-<!-- Logo for opening the chatbot -->
-<img src="{{ url_for('static', filename='HI.gif') }}" alt="Chatbot Logo" class="logo" id="chatbotLogo">
+    <!-- Logo for opening the chatbot -->
+    <img src="chatland.jpg" alt="Chatbot Logo" class="logo" id="chatbotLogo">
 
 <!-- Chatbot iframe -->
 <iframe src="https://landbot.online/v3/H-2614152-2S7NNVOTW4R66A2H/index.html" id="chatbot" style="display: none;"></iframe>
@@ -512,9 +491,19 @@
         chatbot.style.display = chatbot.style.display === 'none' || chatbot.style.display === '' ? 'block' : 'none';
     });
 </script>
+<div class="view-360">
+    <h2 style="margin: 20px 0;">View 360 Degree</h2>
+    <a href="https://maps.app.goo.gl/hJdkKUypQiSAszWK9" target="_blank">
+        <img src="your-image-url.jpg" alt="360 Degree View" style="width: 100%; max-width: 600px; border-radius: 10px; box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);">
+    </a>
+</div>
+<iframe src="https://maps.app.goo.gl/hJdkKUypQiSAszWK9" width="600" height="450" style="border: 0; display: none;" id="iframe-360" allowfullscreen loading="lazy"></iframe>
+
+<script>
+    // Add any necessary JavaScript here
+</script>
+
 
 
 </body>
 </html>
-
-

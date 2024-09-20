@@ -7,7 +7,7 @@ client = MongoClient("mongodb://localhost:27017/")
 db = client["ECE_DPT"]
 
 # Access the 'teachers' collection
-teachers_collection = db.teachers
+teachers_collection = db['teacher_mail_pass']
 
 # Data to insert
 teachers_data = [
