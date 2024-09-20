@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student List</title>
+    <style>
+        /* Global Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            color: #333;
+        }
+
+        /* Header Styles */
+        header {
+            background-color: #ffffff;
+            padding: 20px 0;
+            color: #003366;
+            text-align: center;
+        }
+
+        header img {
+            max-width: 80px;
+            vertical-align: middle;
+            margin-right: 15px;
+        }
+
+        header h1 {
+            display: inline-block;
+            font-size: 30px;
+        }
+
+        /* Navigation Styles */
+        nav {
+            background-color: #0052cc;
+            padding: 10px 0;
+        }
+
+        nav ul {
+            display: flex;
+            justify-content: center;
+            list-style-type: none;
+        }
+
+        nav ul li {
+            background-color: #0052cc;
+            margin: 0 20px;
+        }
+
+        nav ul li a {
+            font-size: 16px;
+            color: rgb(234, 234, 234); /* Ensures white text color on the navbar */
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        nav ul li a:hover {
+            color: #ffcc00; /* Changes the link color on hover for better visibility */
+        }
+
+        /* Main Content */
+        h1 {
+            text-align: center;
+            margin: 20px 0;
+        }
+
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        li {
+            background-color: #f2f2f2;
+            margin: 10px 0;
+            padding: 15px;
+            border-radius: 5px;
+        }
+
+        footer {
+            background-color: #003366;
+            color: rgb(255, 255, 255);
+            text-align: center;
+            padding: 20px 0;
+            margin-top: 40px;
+        }
+
+        footer a {
+            color: white;
+            text-decoration: none;
+        }
+
+        footer p {
+            margin: 5px 0;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header Section -->
+    <header>
+        <img src="{{ url_for('static', filename='KEC-Logo.png') }}" alt="Kongu Engineering College Logo">
+        <h1>Kongu Engineering College, Perundurai</h1>
+    </header>
+
+    <!-- Navigation Bar -->
+    <nav>
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="#vision-mission">Vision & Mission</a></li>
+            <li><a href="#program-outcomes">Program Outcomes</a></li>
+            <li><a href="#about-hod">About HOD</a></li>
+            <li><a href="#faculty">Faculty</a></li>
+            <li><a href="#achievements">Achievements</a></li>
+            <li><a href="#internals">Internals</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </nav>
+
+    <!-- Student List Section -->
+    <h1>Applied Pre-OD</h1>
+    <ul>
+        {% for student in students %}
+        <li>
+            <strong>Register Number:</strong> {{ student['register_number'] }}<br>
+            <strong>Name:</strong> {{ student['name'] }}<br>
+            <strong>Date From:</strong> {{ student['date_from'] }}<br>
+            <strong>Date To:</strong> {{ student['date_to'] }}<br>
+            <strong>Time From:</strong> {{ student['time_from'] }}<br>
+            <strong>Time To:</strong> {{ student['time_to'] }}<br>
+            <strong>Purpose:</strong> {{ student['purpose'] }}<br>
+            <strong>Event Name:</strong> {{ student['event_name'] }}<br>
+            <strong>Venue:</strong> {{ student['venue'] }}<br>
+            <strong>Class Advisor:</strong> {{ student['class_advisor'] }}
+        </li>
+        {% endfor %}
+    </ul>
+
+    <!-- Footer Section -->
+    <footer>
+        <p>&copy; 2023 Kongu Engineering College. All rights reserved.</p>
+        <p>Visit our official website: <a href="http://www.kongu.edu">kongu.edu</a></p>
+    </footer>
+
+</body>
+</html>
