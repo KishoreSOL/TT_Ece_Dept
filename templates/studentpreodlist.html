@@ -42,7 +42,6 @@
             background-color: #0052cc;
             padding: 10px 0;
         }
-
         nav ul {
             display: flex;
             justify-content: center;
@@ -53,36 +52,30 @@
             background-color: #0052cc;
             margin: 0 20px;
         }
-
         nav ul li a {
             font-size: 16px;
             color: rgb(234, 234, 234); /* Ensures white text color on the navbar */
             text-decoration: none;
             transition: color 0.3s ease;
         }
-
         nav ul li a:hover {
             color: #ffcc00; /* Changes the link color on hover for better visibility */
         }
-
         /* Main Content */
         h1 {
             text-align: center;
             margin: 20px 0;
         }
-
         ul {
             list-style-type: none;
             padding: 0;
         }
-
         li {
             background-color: #f2f2f2;
             margin: 10px 0;
             padding: 15px;
             border-radius: 5px;
         }
-
         footer {
             background-color: #003366;
             color: rgb(255, 255, 255);
@@ -90,7 +83,6 @@
             padding: 20px 0;
             margin-top: 40px;
         }
-
         footer a {
             color: white;
             text-decoration: none;
@@ -124,23 +116,32 @@
     </nav>
 
     <!-- Student List Section -->
-    <h1>Applied Pre-OD</h1>
-    <ul>
-        {% for student in students %}
-        <li>
-            <strong>Register Number:</strong> {{ student['register_number'] }}<br>
-            <strong>Name:</strong> {{ student['name'] }}<br>
-            <strong>Date From:</strong> {{ student['date_from'] }}<br>
-            <strong>Date To:</strong> {{ student['date_to'] }}<br>
-            <strong>Time From:</strong> {{ student['time_from'] }}<br>
-            <strong>Time To:</strong> {{ student['time_to'] }}<br>
-            <strong>Purpose:</strong> {{ student['purpose'] }}<br>
-            <strong>Event Name:</strong> {{ student['event_name'] }}<br>
-            <strong>Venue:</strong> {{ student['venue'] }}<br>
-            <strong>Class Advisor:</strong> {{ student['class_advisor'] }}
-        </li>
-        {% endfor %}
-    </ul>
+    <div class="container mt-5">
+ <h1>Applied Pre-OD</h1>
+<ul class="list-group">
+    {% for student in students %}
+    <li class="list-group-item">
+        <strong>Register Number:</strong> {{ student['register_number'] }}<br>
+        <strong>Name:</strong> {{ student['name'] }}<br>
+        <strong>Date From:</strong> {{ student['date_from'] }}<br>
+        <strong>Date To:</strong> {{ student['date_to'] }}<br>
+        <strong>Time From:</strong> {{ student['time_from'] }}<br>
+        <strong>Time To:</strong> {{ student['time_to'] }}<br>
+        <strong>Purpose:</strong> {{ student['purpose'] }}<br>
+        <strong>Event Name:</strong> {{ student['event_name'] }}<br>
+        <strong>Venue:</strong> {{ student['venue'] }}<br>
+        <strong>Class Advisor:</strong> {{ student['class_advisor'] }}<br>
+        <strong>Approved:</strong> 
+        <span style="display:inline-block; width: 12px; height: 12px; border-radius: 50%; margin-left: 5px; background-color: {{ 'green' if student['approved'] else 'red' }};"></span>
+        {{ 'Yes' if student['approved'] else 'No' }}<br>
+    </li>
+    {% endfor %}
+    {% if not students %}
+    <li class="list-group-item">No applications found.</li>
+    {% endif %}
+</ul>
+
+    </div>
 
     <!-- Footer Section -->
     <footer>

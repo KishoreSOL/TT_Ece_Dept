@@ -11,13 +11,13 @@
             padding: 0;
             box-sizing: border-box;
         }
-
+    
         body {
             font-family: Arial, sans-serif;
             background-color: #f4f4f4;
             color: #333;
         }
-
+    
         /* Header Styles */
         header {
             background-color: #ffffff;
@@ -25,40 +25,40 @@
             color: #003366;
             text-align: center;
         }
-
+    
         header img {
             max-width: 80px;
             vertical-align: middle;
             margin-right: 15px;
         }
-
+    
         header h1 {
             display: inline-block;
             font-size: 30px;
         }
-
+    
         /* Navigation Styles */
         nav {
             background-color: #0052cc;
             padding: 10px 0;
         }
-
+    
         nav ul {
             display: flex;
             justify-content: center;
             list-style-type: none;
         }
-
+    
         nav ul li {
             margin: 0 20px;
         }
-
+    
         nav ul li a {
             font-size: 16px;
             color: white;
             text-decoration: none;
         }
-
+    
         /* Form Styles */
         .container {
             max-width: 600px;
@@ -68,23 +68,23 @@
             border-radius: 8px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
         }
-
+    
         h1 {
             text-align: center;
             color: #333;
         }
-
+    
         form {
             display: flex;
             flex-direction: column;
         }
-
+    
         label {
             margin-bottom: 5px;
             font-weight: bold;
         }
-
-        input[type="text"], input[type="date"], input[type="time"] {
+    
+        input[type="text"], input[type="date"], input[type="time"], input[type="email"] {
             padding: 10px;
             margin-bottom: 15px;
             border: 1px solid #ccc;
@@ -92,7 +92,7 @@
             width: calc(100% - 22px);
             box-sizing: border-box;
         }
-
+    
         input[type="submit"] {
             padding: 10px;
             border: none;
@@ -103,15 +103,15 @@
             cursor: pointer;
             transition: background-color 0.3s;
         }
-
+    
         input[type="submit"]:hover {
             background-color: #218838;
         }
-
+    
         .form-group {
             margin-bottom: 15px;
         }
-
+    
         footer {
             background-color: #003366;
             color: white;
@@ -119,16 +119,17 @@
             padding: 20px 0;
             margin-top: 40px;
         }
-
+    
         footer a {
             color: white;
             text-decoration: none;
         }
-
+    
         footer p {
             margin: 5px 0;
         }
     </style>
+    
 </head>
 <body>
     <!-- Header Section -->
@@ -159,6 +160,11 @@
                 <label for="register_number">Register Number:</label>
                 <input type="text" id="register_number" name="register_number" required>
             </div>
+            <div class="form-group">
+                <label for="studentemail">Email:</label>
+                <input type="email" id="studentemail" name="studentemail" required>
+            </div>
+            
             <div class="form-group">
                 <label for="name">Name:</label>
                 <input type="text" id="name" name="name" required>
@@ -192,8 +198,12 @@
                 <input type="text" id="venue" name="venue" required>
             </div>
             <div class="form-group">
-                <label for="class_advisor">Class Advisor:</label>
+                <label for="class_advisor">Class Advisor Name: </label>
                 <input type="text" id="class_advisor" name="class_advisor" required>
+            </div>
+            <div class="form-group">
+                <label for="teacheremail">Class Advisor Email:</label>
+                <input type="email" id="teacheremail" name="teacheremail" required>
             </div>
             <input type="submit" value="Submit">
         </form>

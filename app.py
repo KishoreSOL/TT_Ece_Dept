@@ -1,21 +1,22 @@
 from flask import Flask, request, redirect, url_for, render_template, session
 from pymongo import MongoClient
 from werkzeug.security import check_password_hash
+import uuid
 
 app = Flask(__name__)
-app.secret_key = 'your_secret_key'  # Replace with a strong secret key
+app.secret_key = 'your_secret_key' 
 
-# Replace with your MongoDB connection string
+
 client = MongoClient("mongodb://localhost:27017/")
 db = client['ECE_DPT']
-student_collection = db['students']
-teacher_collection = db['teachers']
-
-
+student_collection = db['student_mail_pass']
+teacher_collection = db['teacher_mail_pass']
+student_preod_collection=db['student_pre_od']
 
 @app.route('/')
 def index():
     return render_template('index.html')
+
 
 @app.route('/login', methods=['GET', 'POST'])
 def login():
@@ -35,9 +36,44 @@ def login():
 
     return render_template('login.html')
 
+@app.route('/logout')
+def logout():
+    session.pop('user', None)  
+    return redirect(url_for('login'))  
+
+
 @app.route('/onduty', methods=['GET'])
 def onduty():
-    return render_template('ondutystudent.html')
+    
+    if 'user' not in session:
+        return redirect(url_for('login'))
+    email = session['user']
+    teacher = teacher_collection.find_one({'email': email})
+    student = student_collection.find_one({'email': email})
+    
+    if teacher:
+        return redirect(url_for('teachersonduty'))
+    elif student:
+        return redirect(url_for('studentonduty'))
+    else:
+        return 'User type not found', 401
+
+@app.route('/teachersonduty')
+def teachersonduty():
+    email=session['user']
+    students = student_preod_collection.find({"teacheremail":email})  
+    return render_template('teachersonduty.html', students=students)
+
+@app.route('/approve/<application_id>', methods=['POST'])
+def approve_student(application_id):
+    
+    student_preod_collection.update_one({'application_id': application_id}, {'$set': {'approved': True}})
+    return redirect(url_for('teachersonduty'))
+
+
+@app.route('/studentonduty')
+def studentonduty():
+    return render_template('studentonduty.html')
 
 
 @app.route('/preodform', methods=['GET', 'POST'])
@@ -53,8 +89,11 @@ def preodform():
         event_name = request.form.get('event_name')
         venue = request.form.get('venue')
         class_advisor = request.form.get('class_advisor')
-        
+        studentemail = request.form.get('studentemail') 
+        teacheremail = request.form.get('teacheremail')  
+
         data = {
+            'application_id': str(uuid.uuid4()),  
             'register_number': register_number,
             'name': name,
             'date_from': date_from,
@@ -64,10 +103,12 @@ def preodform():
             'purpose': purpose,
             'event_name': event_name,
             'venue': venue,
-            'class_advisor': class_advisor
+            'class_advisor': class_advisor,
+            'studentemail': studentemail,
+            'teacheremail':teacheremail, 
+            'approved': False  
         }
-        
-        student_collection.insert_one(data)
+        student_preod_collection.insert_one(data)
         return redirect(url_for('onduty'))
     
     return render_template('form.html')
@@ -75,8 +116,21 @@ def preodform():
 
 @app.route('/getstudentpreoddetails', methods=['GET', 'POST'])
 def getstudentpreoddetails():
-    students = list(student_collection.find())
+    email = session['user']
+    students = list(student_preod_collection.find({"studentemail": email}))
     return render_template('studentpreodlist.html', students=students)
+
+
+
+@app.route('/faculty', methods=['GET'])
+def faculty():
+    return render_template('faculty.html')
+
+@app.route('/seminarbooking', methods=['GET'])
+def seminarbooking():
+    return render_template('seminarbooking.html')
+
+
 
 
 if __name__ == '__main__':
