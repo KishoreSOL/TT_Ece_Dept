@@ -317,10 +317,9 @@
             height: auto; /* Maintain aspect ratio */
         }
 
-        /* Chatbot Styles */
         #chatbot {
             position: fixed;
-            bottom: 80px; /* Adjust to prevent overlap with the logo */
+            bottom: 80px; 
             right: 20px;
             width: 350px;
             height: 500px;
@@ -328,7 +327,7 @@
             border-radius: 10px;
             box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
             z-index: 1000;
-            display: none; /* Initially hidden */
+            display: none; 
         }
     </style>
 </head>
@@ -340,45 +339,25 @@
         <h2>Empowering Future Innovators</h2>
     </header>
 
-    <!-- <nav>
-        <ul>
-            <li><a href="#about-ece">About</a></li>
-            <li><a href="#vision-mission">About-HOD</a></li>
-            <li><a href="#vision-mission">Vision & Mission</a></li>
-            <li><a href="#program-outcomes">Program Outcomes</a></li>
-            <li><a href="faculty.html">Faculty</a></li>
-            <li><a href="#achievements">Achievements</a></li>
-            <li><a href="#internals">Internals</a></li>
-            <li><a href="#contact">Contact</a></li>
-            <li><a href="login.html">Login</a></li>
-            <li><a href="ondutystudent.html">On Duty</a></li>
-        </ul>
-    </nav> -->
-
     <nav>
         <ul>
             <li><a href="#vision-mission">Vision & Mission</a></li>
             <li><a href="#program-outcomes">Program Outcomes</a></li>
             <li><a href="#about-hod">About HOD</a></li>
             <li><a href="{{ url_for('faculty') }}">Faculty</a></li>
-            <li><a href="#achievements">Achievements</a></li>
+            <li><a href="{{ url_for('achievements') }}">Achievements</a></li>
             <li><a href="#internals">Internals</a></li>
             <li><a href="#contact">Contact</a></li>
             <li><a href="{{ url_for('seminarbooking') }}">Seminar Booking</a></li>
             <li><a href="{{ url_for('onduty') }}">On Duty</a></li> 
             {% if 'user' in session %}
-            <!-- If the user is logged in, show their email and a logout option -->
             <li style="color: #ffffff;">Welcome, {{ session['user'] }}</li>
             <li><a href="{{ url_for('logout') }}">Logout</a></li>
         {% else %}
-            <!-- If no user is logged in, show the login link -->
             <li><a href="{{ url_for('login') }}">Login</a></li>
         {% endif %}
-
         </ul>
     </nav>
-    
-
     <div class="banner">
         <video autoplay muted loop>
             <source src="{{ url_for('static', filename='ecevideo.mp4') }}" type="video/mp4">
@@ -394,10 +373,7 @@
                 <p>The Electronics and Communication Engineering (ECE) Department at Kongu Engineering College is dedicated to fostering innovation and excellence in the field of electronics and communication. It offers a comprehensive curriculum that combines theoretical knowledge with practical applications, preparing students for careers in diverse areas such as telecommunications, embedded systems, signal processing, and VLSI design. Our state-of-the-art laboratories and experienced faculty provide a solid foundation for students to explore emerging technologies and contribute to groundbreaking research.</p>
             </div>
         </section>
-
     </center>
-  
-    
 
     <div class="cards" style="margin-top: 20px;">
         <div class="card">
@@ -413,8 +389,6 @@
             <p>We are dedicated to providing quality education and preparing our students for a successful future.</p>
         </div>
     </div>
-   
-
     <section id="program-outcomes">
         <h2>Program Outcomes</h2>
         <div class="outcomes">
@@ -512,8 +486,6 @@
         chatbot.style.display = chatbot.style.display === 'none' || chatbot.style.display === '' ? 'block' : 'none';
     });
 </script>
-
-
 </body>
 </html>
 

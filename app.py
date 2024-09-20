@@ -17,22 +17,20 @@ student_preod_collection=db['student_pre_od']
 def index():
     return render_template('index.html')
 
+
 @app.route('/login', methods=['GET', 'POST'])
 def login():
     if request.method == 'POST':
         email = request.form.get('email')
         password = request.form.get('password')
         user_type = request.form.get('user_type')
-
         collection = teacher_collection if user_type == 'teacher' else student_collection
-
         user = collection.find_one({'email': email})
         if user and user['password'] == password:
             session['user'] = email
             return redirect(url_for('index'))
         else:
             return 'Invalid credentials', 401
-
     return render_template('login.html')
 
 @app.route('/logout')
@@ -129,6 +127,9 @@ def faculty():
 def seminarbooking():
     return render_template('seminarbooking.html')
 
+@app.route('/achievements', methods=['GET'])
+def achievements():
+    return render_template('achievements.html')
 
 
 
